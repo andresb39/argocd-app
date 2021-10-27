@@ -4,16 +4,16 @@ kind: Application
 metadata:
   annotations:
     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: deploys
-  name: argo-notifications
+  name: argocd-notifications
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: argo-notifications
+    namespace: argocd-notifications
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: argo-notifications
+    path: argocd-notifications
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
