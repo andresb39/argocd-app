@@ -1,17 +1,17 @@
 secret:
-  create: false
+  create: true
   annotations: {}
   items:
     slack-miaguila: xoxp-27328246096-2518404033236-2651178985619-eb607a29a327d1590d65b2933995c368
 
 notifiers:
-  service.slack: |
+  service.slack.miaguila: |
     token: $slack-miaguila
 
 
 cm:
   # Whether helm chart creates controller config map
-  create: false
+  create: true
 
 subscriptions:
   - recipients:
