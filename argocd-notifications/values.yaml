@@ -1,104 +1,23 @@
-affinity: {}
-
-# ArgoCD dashboard url; used in place of {{.context.argocdUrl}} in templates
-argocdUrl:
-
-fullnameOverride: ""
-
-image:
-  repository: argoprojlabs/argocd-notifications
-  tag: v1.1.1
-  pullPolicy: IfNotPresent
-
-imagePullSecrets: []
-
-nameOverride: "argocd-notifications"
-
-nodeSelector: {}
-
-updateStrategy:
-  type: Recreate
-
-context:
-
 secret:
   create: true
   annotations: {}
   items:
     slack-miaguila: xoxp-27328246096-2518404033236-2651178985619-eb607a29a327d1590d65b2933995c368
 
-logLevel: info
-
-extraArgs: []
-
-metrics:
-  enabled: false
-  port: 9001
-  service:
-    annotations: {}
-    labels: {}
-  serviceMonitor:
-    enabled: false
-    additionalLabels: {}
-    # namespace: monitoring
-    # interval: 30s
-    # scrapeTimeout: 10s
-
-# Additional container environment variables
-extraEnv: []
-
 notifiers:
   service.slack: |
     token: $slack-miaguila
 
-podAnnotations: {}
-
-podLabels: {}
-
-## Pod Security Context
-securityContext:
-  runAsNonRoot: true
-
-## Container Security Context
-containerSecurityContext: {}
-
-resources: {}
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
-
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: argocd-notifications-controller
-
-  annotations: {}
 
 cm:
   # Whether helm chart creates controller config map
   create: true
 
 subscriptions:
-  # For more information: https://argocd-notifications.readthedocs.io/en/stable/subscriptions/
-
-  # # subscription for on-sync-status-unknown trigger notifications
   - recipients:
     - slack:deploys
-  #   - email:test@gmail.com
     triggers:
       - on-sync-status-unknown
-  # # subscription restricted to applications with matching labels only
-  # - recipients:
-  #   - slack:test3
-  #   selector: test=true
-  #   triggers:
-  #   - on-sync-status-unknown
 
 templates:
   template.app-deployed: |
@@ -297,9 +216,7 @@ triggers:
     - on-sync-status-unknown
 
 bots:
-  # For more information: https://argocd-notifications.readthedocs.io/en/stable/bots/overview/
   slack:
-    # You have to set secret.notifiers.slack.signingSecret
     enabled: true
 
     updateStrategy:
