@@ -25,7 +25,7 @@ secret:
   create: true
   annotations: {}
   items:
-    slack-token:
+    slack-token: xoxp-27328246096-2518404033236-2651178985619-eb607a29a327d1590d65b2933995c368
 
 logLevel: info
 
