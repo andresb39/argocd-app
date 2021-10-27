@@ -9,3 +9,4 @@ dependencies:
 - name: argocd-notifications
   version: 1.5.0
   repository: https://argoproj.github.io/argo-helm
+  valueFiles: [ 'values-miaguila.yaml' ]
