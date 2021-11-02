@@ -41,7 +41,7 @@ ingress:
       path: /
       # If a different path is defined, that path and {path}/* will be added to the ingress resource
       # path: /sonarqube
-  annotations: {}
+  annotations:
     external-dns.alpha.kubernetes.io/hostname: sonar.k8s.lab.miaguila.com
     external-dns.alpha.kubernetes.io/ttl: "30"
     cert-manager.io/cluster-issuer: acme-staging
