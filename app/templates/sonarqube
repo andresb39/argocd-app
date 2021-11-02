@@ -4,17 +4,17 @@ kind: Application
 metadata:
   annotations:
     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: deploys
-  name: argocd-notifications
+  name: sonarqube
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: argocd-notifications
+    namespace: sonarqube
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: argocd-notifications
+    path: sonarqube
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
     helm:
