@@ -33,7 +33,7 @@ service:
   #   - 0.0.0.0/0
   # loadBalancerIP: 1.2.3.4
 ingress:
-  enabled: false
+  enabled: true
   # Used to create an Ingress record.
   hosts:
     - name: sonar.k8s.lab.miaguila.com
